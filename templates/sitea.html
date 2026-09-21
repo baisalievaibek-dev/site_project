@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Читальный зал | Библиотека</title>
+	<style>
+		:root {
+			--ink: #202b2d;
+			--muted: #6d7978;
+			--paper: #f7f4ed;
+			--white: #fffdf8;
+			--green: #1f6258;
+			--green-dark: #17483f;
+			--coral: #d66f51;
+			--line: #e4ded3;
+		}
+
+		* { box-sizing: border-box; }
+		body {
+			margin: 0;
+			color: var(--ink);
+			background: var(--paper);
+			font-family: Georgia, "Times New Roman", serif;
+		}
+		a { color: inherit; text-decoration: none; }
+		.page { max-width: 1180px; margin: 0 auto; padding: 24px 28px 60px; }
+		header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 24px;
+			padding-bottom: 26px;
+			border-bottom: 1px solid var(--line);
+		}
+		.logo { font-size: 25px; font-weight: bold; letter-spacing: .02em; }
+		.logo span { color: var(--coral); }
+		nav { display: flex; gap: 25px; color: var(--muted); font: 14px Arial, sans-serif; }
+		nav a:hover { color: var(--green); }
+		.hero {
+			display: grid;
+			grid-template-columns: 1.2fr .8fr;
+			gap: 50px;
+			align-items: center;
+			padding: 72px 0 65px;
+		}
+		.eyebrow { color: var(--coral); font: bold 12px Arial, sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+		h1 { max-width: 650px; margin: 15px 0 20px; font-size: clamp(42px, 6vw, 76px); line-height: .98; font-weight: normal; }
+		.intro { max-width: 510px; margin: 0 0 28px; color: var(--muted); font: 17px/1.6 Arial, sans-serif; }
+		.search { display: flex; max-width: 530px; padding: 6px; background: var(--white); border: 1px solid var(--line); border-radius: 5px; box-shadow: 0 8px 25px rgba(31, 54, 49, .07); }
+		.search input { min-width: 0; flex: 1; padding: 13px 14px; border: 0; outline: 0; background: transparent; font-size: 15px; }
+		.search button, .button { padding: 13px 19px; border: 0; border-radius: 3px; color: white; background: var(--green); font: bold 14px Arial, sans-serif; cursor: pointer; }
+		.search button:hover, .button:hover { background: var(--green-dark); }
+		.hero-art { position: relative; min-height: 300px; }
+		.book-stack { position: absolute; right: 8%; bottom: 35px; width: 240px; height: 145px; transform: rotate(-8deg); background: var(--coral); box-shadow: 18px 18px 0 var(--green), 36px 36px 0 #d5b998; }
+		.book-stack::before { content: "КНИГИ\A ДЛЯ ЖИЗНИ"; white-space: pre; position: absolute; left: 25px; top: 29px; color: #fff9ec; font: bold 24px/1.2 Georgia, serif; }
+		.hero-art::after { content: "✦"; position: absolute; top: 16px; right: 8%; color: var(--coral); font-size: 60px; }
+		.section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 22px; }
+		h2 { margin: 0; font-size: 30px; font-weight: normal; }
+		.see-all { color: var(--green); font: bold 13px Arial, sans-serif; }
+		.books { display: grid; grid-template-columns: repeat(4, 1fr); gap: 17px; }
+		.book { padding: 16px; background: var(--white); border: 1px solid var(--line); transition: transform .2s ease, box-shadow .2s ease; }
+		.book:hover { transform: translateY(-5px); box-shadow: 0 12px 22px rgba(31, 54, 49, .10); }
+		.cover { display: grid; place-items: center; min-height: 190px; margin-bottom: 17px; padding: 18px; text-align: center; color: white; font-size: 25px; line-height: 1.05; }
+		.cover.one { background: #345d58; } .cover.two { background: #ba7250; } .cover.three { background: #5a526b; } .cover.four { background: #c59a5a; }
+		.book h3 { margin: 0 0 7px; font-size: 19px; font-weight: normal; }
+		.author { color: var(--muted); font: 13px Arial, sans-serif; }
+		.categories { display: flex; flex-wrap: wrap; gap: 10px; margin: 45px 0; padding: 25px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+		.category { padding: 11px 16px; border: 1px solid #c9cfc8; border-radius: 30px; color: var(--green); font: 14px Arial, sans-serif; }
+		.category:hover { color: white; background: var(--green); border-color: var(--green); }
+		footer { display: flex; justify-content: space-between; gap: 20px; padding-top: 20px; color: var(--muted); font: 13px Arial, sans-serif; }
+		@media (max-width: 760px) {
+			.page { padding: 18px 18px 40px; }
+			header { align-items: flex-start; flex-wrap: wrap; }
+			 nav { order: 3; width: 100%; justify-content: space-between; }
+			.hero { grid-template-columns: 1fr; gap: 15px; padding: 50px 0 45px; }
+			.hero-art { min-height: 215px; }
+			.book-stack { right: 16%; width: 210px; height: 125px; }
+			.books { grid-template-columns: repeat(2, 1fr); }
+			.cover { min-height: 145px; font-size: 20px; }
+			footer { flex-direction: column; }
+		}
+		@media (max-width: 420px) { .books { grid-template-columns: 1fr; } }
+	</style>
+</head>
+<body>
+	<div class="page">
+		<header>
+			<a class="logo" href="#">Читальный<span> зал</span></a>
+			<nav><a href="#books">Книги</a><a href="#categories">Категории</a><a href="#about">О библиотеке</a></nav>
+		</header>
+
+		<main>
+			<section class="hero">
+				<div>
+					<div class="eyebrow">Онлайн-библиотека</div>
+					<h1>Место, где начинаются новые истории.</h1>
+					<p class="intro">Находите книги для работы, отдыха и вдохновения. Читайте классику и открывайте современных авторов.</p>
+					<form class="search" action="#books" method="get">
+						<input type="search" name="q" value="{{ query }}" placeholder="Название книги или автор..." aria-label="Поиск книги">
+						<button type="submit">Найти</button>
+					</form>
+				</div>
+				<div class="hero-art" aria-hidden="true"><div class="book-stack"></div></div>
+			</section>
+
+			<section id="books">
+                <div class="section-head"><h2>{% if query %}Результаты поиска{% else %}Популярное сегодня{% endif %}</h2><a class="see-all" href="{% url 'home' %}">Сбросить поиск →</a></div>
+				<div class="books">
+					{% for book in books %}
+					<article class="book">
+						<div class="cover {{ book.cover_class }}">{{ book.cover_text|linebreaksbr }}</div>
+						<h3>{{ book.title }}</h3>
+						<div class="author">{{ book.author }}</div>
+					</article>
+					{% empty %}
+					<p>По запросу «{{ query }}» книги не найдены.</p>
+					{% endfor %}
+				</div>
+			</section>
+
+			<section id="categories" class="categories">
+				<a class="category" href="#">Художественная литература</a><a class="category" href="#">Бизнес</a><a class="category" href="#">История</a><a class="category" href="#">Психология</a><a class="category" href="#">Наука</a>
+			</section>
+		</main>
+		<footer id="about"><span>© 2026 Читальный зал</span><span>Читайте больше. Живите глубже.</span></footer>
+	</div>
+</body>
+</html>
