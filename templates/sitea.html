@@ -37,6 +37,19 @@
 		.logo span { color: var(--coral); }
 		nav { display: flex; gap: 25px; color: var(--muted); font: 14px Arial, sans-serif; }
 		nav a:hover { color: var(--green); }
+		.back-button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 10px 16px;
+			border: 1px solid var(--line);
+			border-radius: 6px;
+			background: var(--white);
+			color: var(--ink);
+			font: bold 13px Arial, sans-serif;
+			cursor: pointer;
+		}
+		.back-button:hover { background: #273041; }
 		.hero {
 			display: grid;
 			grid-template-columns: 1.2fr .8fr;
@@ -95,6 +108,7 @@
 		<header>
 			<a class="logo" href="#">Читальный<span> зал</span></a>
 			<nav><a href="#books">Книги</a><a href="#categories">Категории</a><a href="#about">О библиотеке</a></nav>
+			<button class="back-button" type="button" onclick="window.history.length > 1 ? history.back() : window.location.href='{% url 'home' %}'">Назад</button>
 		</header>
 
 		<main>

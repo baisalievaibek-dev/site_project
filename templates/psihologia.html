@@ -61,6 +61,17 @@
 		.cover.brown { background: #3a3c49; }
 		.cover.purple { background: #303d52; }
 		.cover.red { background: #414253; }
+		.back-link {
+			display: inline-block;
+			margin-bottom: 18px;
+			padding: 10px 16px;
+			border: 1px solid var(--line);
+			border-radius: 6px;
+			background: var(--panel);
+			color: var(--ink);
+			text-decoration: none;
+			font: bold 13px Arial, sans-serif;
+		}
 		.book-info { padding: 16px; }
 		.book-info h2 {
 			margin: 0 0 7px;
@@ -82,6 +93,7 @@
 </head>
 <body>
 	<main class="container">
+		<a class="back-link" href="{% url 'home' %}">← На главную</a>
 		<h1>Книги по психологии</h1>
 		<div class="books-grid">
 			{% for book in books %}
