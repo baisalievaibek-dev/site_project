@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Художественная литература</title>
+    <style>
+        * { box-sizing: border-box; }
+        :root {
+            --page: #10141e;
+            --panel: #1b202c;
+            --ink: #f0f2f8;
+            --muted: #aab2c2;
+            --line: #313849;
+            --purple: #707a94;
+            --purple-light: #d9deeb;
+        }
+        body {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            background: radial-gradient(ellipse at 8% 0%, rgba(248, 249, 255, .16) 0, rgba(210, 219, 240, .06) 16%, transparent 36%), var(--page);
+            color: var(--ink);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px 60px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #d7cdbd;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--ink);
+        }
+
+        .logo span {
+            color: var(--purple-light);
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #4b4b4b;
+            font-weight: 600;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            align-items: center;
+            gap: 30px;
+            padding: 50px 0 30px;
+        }
+
+        .tag {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 8px 14px;
+            background: #302c43;
+            color: var(--purple-light);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 34px;
+            line-height: 1.2;
+            color: var(--ink);
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: var(--purple);
+            color: #f7f4fb;
+        }
+
+        .btn-secondary {
+            background: #252a3d;
+            color: var(--ink);
+            border: 1px solid var(--line);
+        }
+
+        .hero-card {
+            background: #34334a;
+            min-height: 280px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+        }
+
+        .hero-card::before,
+        .hero-card::after {
+            content: "";
+            position: absolute;
+            background: rgba(188, 173, 218, 0.16);
+            border-radius: 12px;
+        }
+
+        .hero-card::before {
+            width: 160px;
+            height: 210px;
+            right: 50px;
+            top: 30px;
+            transform: rotate(-15deg);
+        }
+
+        .hero-card::after {
+            width: 120px;
+            height: 180px;
+            left: 45px;
+            bottom: 25px;
+            transform: rotate(15deg);
+        }
+
+        .hero-card .book-label {
+            position: absolute;
+            right: 70px;
+            bottom: 35px;
+            color: white;
+            font-size: 26px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        section {
+            margin-top: 50px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin: 20px 0 25px;
+        }
+
+        .section-title h2 {
+            margin: 0;
+            font-size: 32px;
+            color: var(--ink);
+        }
+
+        .section-title a {
+            color: var(--purple-light);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(190px, 1fr));
+            gap: 20px;
+        }
+
+        .book-card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            overflow: hidden;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 22px rgba(5, 7, 18, .32);
+        }
+
+        .cover {
+            min-height: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 1.2;
+            text-align: center;
+            color: white;
+            padding: 15px;
+        }
+
+        .cover.green { background: #354052; }
+        .cover.brown { background: #3a3c49; }
+        .cover.purple { background: #343d52; }
+        .cover.gold { background: #414253; }
+        .cover.red { background: #3d3d4d; }
+        .cover.navy { background: #2f3b50; }
+
+        .book-info { padding: 16px; }
+
+        .book-info h3 {
+            margin: 0 0 7px;
+            font-size: 19px;
+            font-weight: normal;
+            color: var(--ink);
+        }
+
+        .book-author {
+            color: var(--muted);
+            font: 13px Arial, sans-serif;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .book-card { transition: none; }
+        }
+
+        .topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .chip {
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: #252a3d;
+            color: var(--purple-light);
+            font-weight: 600;
+            border: 1px solid var(--line);
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .books-grid {
+                grid-template-columns: repeat(2, minmax(180px, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <main>
+            <section id="books">
+                <div class="section-title">
+                    <h1>Художественная литература</h1>
+                </div>
+
+                <div class="books-grid">
+                    {% for book in books %}
+                    <article class="book-card">
+                        <div class="cover {{ book.cover_class }}">{{ book.cover_text|linebreaksbr }}</div>
+                        <div class="book-info">
+                            <h3>{{ book.title }}</h3>
+                            <div class="book-author">{{ book.author }}</div>
+                        </div>
+                    </article>
+                    {% empty %}
+                    <p>Книг пока нет.</p>
+                    {% endfor %}
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

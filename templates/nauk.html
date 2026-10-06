@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Научные книги</title>
+	<style>
+		* { box-sizing: border-box; }
+		:root {
+			--page: #10141e;
+			--panel: #1b202c;
+			--ink: #f0f2f8;
+			--muted: #aab2c2;
+			--line: #313849;
+		}
+		body {
+			margin: 0;
+			background: radial-gradient(ellipse at 8% 0%, rgba(248, 249, 255, .16) 0, rgba(210, 219, 240, .06) 16%, transparent 36%), var(--page);
+			color: var(--ink);
+			font-family: Georgia, "Times New Roman", serif;
+		}
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 30px 20px 60px;
+		}
+		h1 {
+			margin: 20px 0 25px;
+			color: var(--ink);
+			font-size: 34px;
+			line-height: 1.2;
+		}
+		.books-grid {
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			gap: 20px;
+		}
+		.book-card {
+			overflow: hidden;
+			background: var(--panel);
+			border: 1px solid var(--line);
+			transition: transform .2s ease, box-shadow .2s ease;
+		}
+		.book-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 12px 22px rgba(5, 7, 18, .32);
+		}
+		.cover {
+			display: flex;
+			min-height: 190px;
+			align-items: center;
+			justify-content: center;
+			padding: 15px;
+			color: white;
+			font-size: 22px;
+			font-weight: bold;
+			line-height: 1.2;
+			text-align: center;
+		}
+		.cover.green { background: #354052; }
+		.cover.brown { background: #3a3c49; }
+		.cover.purple { background: #303d52; }
+		.cover.red { background: #414253; }
+		.book-info { padding: 16px; }
+		.book-info h2 {
+			margin: 0 0 7px;
+			color: var(--ink);
+			font-size: 19px;
+			font-weight: normal;
+		}
+		.book-author { color: var(--muted); font: 13px Arial, sans-serif; }
+		@media (max-width: 900px) {
+			.books-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+		}
+		@media (max-width: 560px) {
+			.books-grid { grid-template-columns: 1fr; }
+		}
+		@media (prefers-reduced-motion: reduce) {
+			.book-card { transition: none; }
+		}
+	</style>
+</head>
+<body>
+	<main class="container">
+		<h1>Научные книги</h1>
+		<div class="books-grid">
+			{% for book in books %}
+			<article class="book-card">
+				<div class="cover {{ book.cover_class }}">{{ book.cover_text|linebreaksbr }}</div>
+				<div class="book-info">
+					<h2>{{ book.title }}</h2>
+					<div class="book-author">{{ book.author }}</div>
+				</div>
+			</article>
+			{% empty %}
+			<p>Книг пока нет.</p>
+			{% endfor %}
+		</div>
+	</main>
+</body>
+</html>

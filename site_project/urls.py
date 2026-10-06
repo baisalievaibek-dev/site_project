@@ -21,4 +21,9 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+    path('hudozhestvennaya/', views.hudoj_literatura, name='hudoj_literatura'),
+    path('biznes/', views.business_books, name='business_books'),
+    path('istoriya/', views.history_books, name='history_books'),
+    path('psihologiya/', views.psychology_books, name='psychology_books'),
+    path('nauka/', views.science_books, name='science_books'),
 ]
