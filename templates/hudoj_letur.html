@@ -22,6 +22,11 @@
             color: var(--ink);
         }
 
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -110,7 +115,13 @@
             text-decoration: none;
             font-weight: bold;
             border: 1px solid var(--line);
+            animation: fadeInUp .5s ease;
+            transition: transform .2s ease, box-shadow .2s ease;
         }
+
+        .back-link:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(10,15,24,.22); }
+
+        .book-card { animation: fadeInUp .55s ease both; }
 
         .btn {
             display: inline-block;
@@ -292,6 +303,7 @@
 <body>
     <div class="container">
         <main>
+            <a class="back-link" href="{% url 'home' %}">← На главную</a>
             <section id="books">
                 <div class="section-title">
                     <h1>Художественная литература</h1>
